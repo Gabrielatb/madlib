@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Game!</title>
+</head>
+<body>
+    <form action="/madlib">
+        Enter a name of a person: <input type="text" name="person"><br>
+        Enter a color: <input type="text" name="color"><br>
+        Enter a noun: <input type="text" name="noun"><br>
+        Enter a verb: <input type="text" name="verb"><br>
+        Enter an adjective: <select name="adjective">
+            {% for adjective in adjectives %}
+            <option value="{{ adjective }}">{{ adjective }}</option>
+            {% endfor %}
+        </select><br>
+        Select your favorite animals:<br>
+            {% for pet in pets %}
+            <input type="checkbox" name="pets" value="{{ pet }}">{{ pet }}
+            {% endfor %}<br>
+        <input type="submit">
+    </form>
+</body>
+</html>

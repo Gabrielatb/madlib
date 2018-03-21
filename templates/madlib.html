@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>Madlib</title>
+</head>
+<body>
+    <p>There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab.<br>
+        When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way.<br>
+        Then the
+        {% if pets %}
+            {% for pet in pets %}
+                {% if loop.last %}
+                    and {{ pet }}s
+                {% else %}
+                    {{ pet }}s,
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            air
+        {% endif %}
+        {{ verb }} into the lab.</p>
+</body>
+</html>
