@@ -52,17 +52,9 @@ def show_madlib():
     noun = request.args.get("noun")
     person = request.args.get("person")
     adjective = request.args.get("adjective")
-
-    pets = []
-    print request.args
-    for arg, value in request.args.items():
-        print arg
-        print value
-        if arg == 'pets':
-            pets.append(value)
-    print pets
-
     verb = request.args.get("verb")
+
+    pets = request.args.getlist("pets")
 
     return render_template("madlib.html", color=color, noun=noun,
                            person=person, adjective=adjective, pets=pets,
