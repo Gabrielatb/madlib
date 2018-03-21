@@ -1,14 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <title>Game!</title>
-</head>
-<body>
-    <form action="/madlib">
-        Enter a name of a person: <input type="text" name="person"><br>
+{% extends "base.html" %}
+{% block title %} A Game {% endblock %}  
+{% block body %} 
+    <form action="/madlib" method="POST">
+        Enter your name again please...: <input type="text" name="person"><br>
+        Enter a name of a person: <input type="text" name="person2"><br>
+        Enter a name of another person: <input type="text" name="person3"><br>
         Enter a color: <input type="text" name="color"><br>
         Enter a noun: <input type="text" name="noun"><br>
-        Enter a verb: <input type="text" name="verb"><br>
+        Enter a verb (past tense): <input type="text" name="verb"><br>
         Enter an adjective: <select name="adjective">
             {% for adjective in adjectives %}
             <option value="{{ adjective }}">{{ adjective }}</option>
@@ -20,5 +19,4 @@
             {% endfor %}<br>
         <input type="submit">
     </form>
-</body>
-</html>
+{% endblock %}

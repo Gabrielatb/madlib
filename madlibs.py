@@ -1,5 +1,6 @@
 """A madlib game that compliments its users."""
 
+from random import choice
 from flask import Flask, render_template, request
 
 # "__name__" is a special Python variable for the name of the current module.
@@ -16,8 +17,9 @@ ADJECTIVES = ['vivacious', 'explosive', 'slumbery', 'awesome', 'cool']
 
 PETS = [
     'dog', 'cat', 'balloonicorn', 'magical ferret', 'worm', 'snake', 'yak',
-    'alpaca'
+    'alpaca', 'turtle'
 ]
+MADLIBS = ["madlib1.html", "madlib2.html"]
 
 
 @app.route('/')
@@ -46,19 +48,26 @@ def show_madlib_form():
         return render_template("game.html", adjectives=ADJECTIVES, pets=PETS)
 
 
-@app.route('/madlib')
+@app.route('/madlib', methods=["GET", "POST"])
 def show_madlib():
-    color = request.args.get("color")
-    noun = request.args.get("noun")
-    person = request.args.get("person")
-    adjective = request.args.get("adjective")
-    verb = request.args.get("verb")
+    if request.method == 'GET':
+        user_input = request.args
+    else:
+        user_input = request.form
 
-    pets = request.args.getlist("pets")
+    color = user_input.get("color")
+    noun = user_input.get("noun")
+    person = user_input.get("person")
+    person2 = user_input.get("person2")
+    person3 = user_input.get("person3")
+    adjective = user_input.get("adjective")
+    verb = user_input.get("verb")
 
-    return render_template("madlib.html", color=color, noun=noun,
-                           person=person, adjective=adjective, pets=pets,
-                           verb=verb)
+    pets = user_input.getlist("pets")
+
+    return render_template(choice(MADLIBS), color=color, noun=noun,
+                           person=person, person2=person2, person3=person3,
+                           adjective=adjective, pets=pets, verb=verb)
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also

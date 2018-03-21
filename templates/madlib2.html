@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Madlib {% endblock %}  
+{% block body %} 
+    <p>
+        Dear {{ person }},<br>
+        I am having a(n) {{ adjective }} time at camp.
+        The counselour is {{ adjective }} and the food is {{ adjective }}.
+        I met {{ person3 }} and we became {{ adjective }} friends.
+        Unfortunately, {{ person3 }} is {{ adjective }} and I {{ verb }} my
+        {% if pets %}
+            {% for pet in pets %}
+                {% if loop.last %}
+                    and {{ pet }}s
+                {% else %}
+                    {{ pet }}s,
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            air
+        {% endif %} so we couldn`t go {{ verb }} like everybody else.
+        I need more {{ noun }} and a {{ noun }} sharpener, so please {{ verb }} more when you {{ verb }} back.<br>
+        Yours,<br>
+        {{ person2 }}
+    </p>
+    <img src="https://media.giphy.com/media/1uOfYujtw6Lq8/giphy.gif">
+{% endblock %}

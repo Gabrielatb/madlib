@@ -1,9 +1,6 @@
-<!doctype html>
-<html>
-<head>
-  <title>Madlib</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Madlib {% endblock %}  
+{% block body %} 
     <p>There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab.<br>
         When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way.<br>
         Then the
@@ -19,5 +16,5 @@
             air
         {% endif %}
         {{ verb }} into the lab.</p>
-</body>
-</html>
+        <img src="https://media.giphy.com/media/lHsCS3IickU7e/giphy.gif">
+{% endblock %}
